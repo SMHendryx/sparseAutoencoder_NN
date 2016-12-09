@@ -1,4 +1,4 @@
-# Authors: Sean Hendryx, Dr. Clayton Morrison
+# Authors: Dr. Clayton Morrison, Sean Hendryx
 # Written for Machine Learning, INFO 521, at the University of Arizona
 # December 2016
 # Code adapted from Stanford's: http://ufldl.stanford.edu/wiki/index.php/Neural_Networks, and ideas from https://github.com/jatinshah/ufldl_tutorial
@@ -7,8 +7,9 @@
 # training images: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
 # training labels: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 
-
 # Top level script
+
+# Currently scripted to execute sparse autoencoder, change autoencoder_cost_and_grad_sparse() to # autoencoder_cost_and_grad() in step five to execute autoencoding without sparsity constraint
 
 import load_MNIST
 import visualize
@@ -29,15 +30,6 @@ import sys
 # number of input units
 visible_size = 28 * 28
 
-
-
-
-# desired average activation of the hidden units.
-# (This was denoted by the Greek alphabet rho, which looks like a lower-case "p",
-#  in the lecture notes).
-
-
-
 # DEBUG (set to True in Ex 3)
 DEBUG = False  # True
 
@@ -52,6 +44,7 @@ lambda_ = 0.0001
 
 problem = "d"
 
+# desired average activation of the hidden units:
 #rhoTest = .05
 #rhoTest = .01
 rhoTest = .005
@@ -69,7 +62,6 @@ if DEBUG is False:
     elif problem is "d":
         hidden_size = 250
         betaTest = .01
-
 
 
 # ======================================================================
@@ -117,7 +109,6 @@ patches_test = images[:, 1200:1300]  # grabs 100 image patches that will be used
 
 #Visualize and save 100 patches from the test dataset
 #visualize.plot_images(patches_test[:, 0:100], filepath = "../figures/100_test_patches.png")
-
 
 
 # ======================================================================
@@ -211,6 +202,8 @@ if DEBUG:
     print "(should be at least < 1.0e-07)"
 
     print "========== DEBUG: checking gradient DONE =========="
+
+
 """
 # ======================================================================
 # STEP 5: After verifying that your implementation of
@@ -284,7 +277,7 @@ print "      sufficient for our purposes here."
 # ======================================================================
 # STEP 6: Visualize and save results
 
-results_filepath_root = 'autoencoder_k{0}_h{1}_l{2}'.format(patches_train.shape[1], hidden_size, "point0001")
+results_filepath_root = 'autoencoder_k{0}_h{1}_l{2}'.format(patches_train.shape[1], hidden_size, "point0001") #lambda value hardcoded in file name to avoid system from thinking end of name is file type extension, e.g. "file.0001.png"
 
 utils.plot_and_save_results\
     (opt_theta, visible_size, hidden_size,
@@ -308,4 +301,3 @@ sys.exit()
 # Move the above line to different parts of the assignment
 #   as you implement more of the functionality.
 #####
-
