@@ -1,3 +1,15 @@
+# Authors: Sean Hendryx, Dr. Clayton Morrison
+# Written for Machine Learning, INFO 521, at the University of Arizona
+# December 2016
+# Code adapted from Stanford's: http://ufldl.stanford.edu/wiki/index.php/Neural_Networks, and ideas from https://github.com/jatinshah/ufldl_tutorial
+
+# Data can be downloaded from: 
+# training images: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+# training labels: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+
+
+# Top level script
+
 import load_MNIST
 import visualize
 import utils
