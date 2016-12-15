@@ -1,3 +1,5 @@
+# Authors: Dr. Clayton Morrison
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
